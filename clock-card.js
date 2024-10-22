@@ -27,6 +27,7 @@ Date.prototype.format = function (formatString) {
     formatString = formatString.replace(/MMM/g, 'ZZZ');
     formatString = formatString.replace(/MM/g, leadingZero(this.getMonth() + 1));
     formatString = formatString.replace(/M/g, this.getMonth() + 1);
+    formatString = formatString.replace(/YYYY/g, this.getFullYear());
     formatString = formatString.replace(/DDDD/g, 'XXXX');
     formatString = formatString.replace(/DDD/g, 'XXX');
     formatString = formatString.replace(/DD/g, leadingZero(this.getDate()));
@@ -34,6 +35,7 @@ Date.prototype.format = function (formatString) {
 
     formatString = formatString.replace(/a/g, ampm);
     formatString = formatString.replace(/ZZZZ/g, monthNames[this.getMonth() + 12]);
+    formatString = formatString.replace(/YYYY/g, this.getFullYear());
     formatString = formatString.replace(/ZZZ/g, monthNames[this.getMonth()]);
     formatString = formatString.replace(/XXXX/g, dayNames[this.getDay() + 7]);
     formatString = formatString.replace(/XXX/g, dayNames[this.getDay()]);
@@ -63,6 +65,7 @@ class ClockCard extends HTMLElement {
             const current_tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
             var formatted_timezone = (config.time_zone ? config.time_zone : current_tz).replace('_', " ");
             var caption;
+            var noCaption;
             if (config.caption) {
                 caption = config.caption;
             }
