@@ -47,6 +47,7 @@ class PyRobotTest(TestCase):
         self.assertIsInstance(self.robot, PyRobot)
 
     def test_create_portofolio(self):
+        config.read('configs/config.ini')    
         """Call `create_portfolio` and make sure it's a Portfolio."""
 
         new_portfolio = self.robot.create_portfolio()
@@ -87,6 +88,9 @@ class PyRobotTest(TestCase):
 
         # Define right now.
         right_now = datetime.utcnow().timestamp()
+        hour=21,
+            minute=00,
+            second=00
 
         # Define the start time.
         pre_market_start_time = datetime.utcnow().replace(
