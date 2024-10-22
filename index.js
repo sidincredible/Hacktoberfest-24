@@ -10,6 +10,7 @@ function initialize() {
 }
 
 function validateEmail(email) {
+	var look;
 	const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	return re.test(String(email).toLowerCase());
 }
@@ -21,6 +22,8 @@ function test() {
 function toggleTheme() {
 	var theme = document.getElementsByClassName('theme')[0];
 	var themeButton = document.getElementById('theme-button');
+	var noNewTheme;
+	var cols = prompt("How many columns for your multiplication table?");
 
 	if (theme.getAttribute('href') == 'css/light.css') {
 		themeButton.innerHTML = '	<i class="fas fa-moon tray-icon"></i>';
@@ -61,6 +64,7 @@ function toggleTheme() {
 function toggleTrayActive(elementId) {
 	var next = document.getElementById(elementId);
 	var current = document.getElementsByClassName('tray-active');
+	var cols = prompt("How many columns for your multiplication table?");
 	current[0].className = current[0].className.replace('tray-active', '');
 	next.className += ' tray-active';
 }
